@@ -92,11 +92,11 @@ public:
 		    }
 	}
 
-	void modifierProduit(int id, double nouveauPrix, int nouveauStock) {
+	void modifierProduit(int id, double nouveauPrix, int nouveauquantite) {
     for (auto& produit : produits) {
         if (produit.getid() == id) {
             produit.setprix(nouveauPrix);
-            produit.setquantite(nouveauStock);
+            produit.setquantite(nouveauquantite);
             cout << "Produit mis à jour avec succès.\n";
             return;
         }

@@ -67,19 +67,19 @@ void chargerProduits(GestionnaireProduits &gestionnaireProduits) {
     string ligne;
     while (getline(fichier, ligne)) {
         stringstream ss(ligne);
-        string id, nom, prix, stock, categorie, fournisseurNom, fournisseurContact, fournisseurType;
+        string id, nom, prix, quantite, categorie, fournisseurNom, fournisseurContact, fournisseurType;
 
         getline(ss, id, ';');
         getline(ss, nom, ';');
         getline(ss, prix, ';');
-        getline(ss, stock, ';');
+        getline(ss, quantite, ';');
         getline(ss, categorie, ';');
         getline(ss, fournisseurNom, ';');
         getline(ss, fournisseurContact, ';');
         getline(ss, fournisseurType, ';');
 
         Fournisseur fournisseur(stoi(id), fournisseurNom, fournisseurContact, fournisseurType);
-        Produit produit(stoi(id), nom, stod(prix), stoi(stock), categorie, fournisseur);
+        Produit produit(stoi(id), nom, stod(prix), stoi(quantite), categorie, fournisseur);
         gestionnaireProduits.ajouterProduit(produit);
     }
 
@@ -129,7 +129,7 @@ void chargerCommandes(GestionnaireCommandes &gestionnaireCommandes, const Gestio
 
 void afficherMenuPrincipal() {
     cout << "\n==== MENU PRINCIPAL ====\n";
-    cout << "1. Gestion du stock des produits\n";
+    cout << "1. Gestion du quantite des produits\n";
     cout << "2. Gestion des commandes\n";
     cout << "0. Quitter\n";
     cout << "========================\n";
@@ -137,9 +137,9 @@ void afficherMenuPrincipal() {
 }
 
 void afficherMenuProduits() {
-    cout << "\n==== GESTION DU STOCK DES PRODUITS ====\n";
+    cout << "\n==== GESTION DU quantite DES PRODUITS ====\n";
     cout << "1. Ajouter un produit\n";
-    cout << "2. Modifier le prix et le stock d'un produit\n";
+    cout << "2. Modifier le prix et le quantite d'un produit\n";
     cout << "3. Rechercher un produit par nom\n";
     cout << "4. Rechercher un produit par catégorie\n";
     cout << "5. Rechercher un produit par fournisseur\n";
@@ -187,14 +187,14 @@ int main() {
                             system("clear");
                             string nom, categorie, fournisseurNom, fournisseurContact, fournisseurType;
                             double prix;
-                            int stock;
+                            int quantite;
 
                             cout << "Nom du produit : ";
                             cin >> nom;
                             cout << "Prix du produit : ";
                             cin >> prix;
-                            cout << "Stock du produit : ";
-                            cin >> stock;
+                            cout << "quantite du produit : ";
+                            cin >> quantite;
                             cout << "Catégorie du produit : ";
                             cin >> categorie;
                             cout << "Nom du fournisseur : ";
@@ -205,7 +205,7 @@ int main() {
                             cin >> fournisseurType;
 
                             Fournisseur fournisseur(0, fournisseurNom, fournisseurContact, fournisseurType);
-                            Produit produit(0, nom, prix, stock, categorie, fournisseur);
+                            Produit produit(0, nom, prix, quantite, categorie, fournisseur);
                             gestionnaireProduits.ajouterProduit(produit);
 
                             sauvegarderProduits(gestionnaireProduits); // Sauvegarde automatique
@@ -214,16 +214,16 @@ int main() {
                         }
                          case 2: {
                             system("clear");
-                            // Modifier le prix et la stock
-                            int id, stock;
+                            // Modifier le prix et la quantite
+                            int id, quantite;
                             double prix;
                             cout << "ID du produit à modifier : ";
                             cin >> id;
                             cout << "Nouveau prix : ";
                             cin >> prix;
-                            cout << "Nouvelle stock : ";
-                            cin >> stock;
-                            gestionnaireProduits.modifierProduit(id, prix, stock);
+                            cout << "Nouvelle quantite : ";
+                            cin >> quantite;
+                            gestionnaireProduits.modifierProduit(id, prix, quantite);
                             sauvegarderProduits(gestionnaireProduits);
                             cout << "Produit modifié avec succès.\n";
                             break;
