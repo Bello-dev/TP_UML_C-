@@ -129,7 +129,7 @@ void chargerCommandes(GestionnaireCommandes &gestionnaireCommandes, const Gestio
 
 void afficherMenuPrincipal() {
     cout << "\n==== MENU PRINCIPAL ====\n";
-    cout << "1. Gestion du quantite des produits\n";
+    cout << "1. Gestion du STOCK des produits\n";
     cout << "2. Gestion des commandes\n";
     cout << "0. Quitter\n";
     cout << "========================\n";
@@ -137,7 +137,7 @@ void afficherMenuPrincipal() {
 }
 
 void afficherMenuProduits() {
-    cout << "\n==== GESTION DU quantite DES PRODUITS ====\n";
+    cout << "\n==== GESTION DU STOCK DES PRODUITS ====\n";
     cout << "1. Ajouter un produit\n";
     cout << "2. Modifier le prix et le quantite d'un produit\n";
     cout << "3. Rechercher un produit par nom\n";
